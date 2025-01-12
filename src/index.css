@@ -1,68 +1,110 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.underline {
+    text-decoration-line: underline;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.opacity-25 {
+    opacity: 0.25;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+.opacity-50 {
+    opacity: 0.5;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+@media (hover: none) {
+    .emoji-trigger {
+        visibility: hidden;
+    }
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+@media (pointer: coarse) {
+    .emoji-trigger {
+        visibility: hidden;
+    }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.article {
+    background-color: #ffffe0;
+    /* Very light yellow background */
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    padding-bottom: 120px;
+}
+
+.article.collapsed {
+    width: 0px;
+    padding: 0;
+    transition-duration: 300ms;
+}
+
+.article.collapsed * {
+    display: none;
+}
+
+.article p {
+    font-size: 17px;
+    line-height: 1.5;
+    color: #333;
+    margin: 10px 0;
+}
+
+.article h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.article h2 .app-name {
+    color: #1f2937;
+    text-decoration: underline;
+}
+
+.article h3 {
+    font-size: 25px;
+    color: #444;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.article ul {
+    list-style-type: disc;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.article ul li {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    margin-bottom: 0.5rem;
+}
+
+.article strong {
+    font-weight: 700;
+}
+
+.toc {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    counter-reset: section;
+}
+
+.toc li {
+    margin: 5px 0;
+    padding: 5px 10px;
+    border-left: 4px solid #333;
+    background-color: #fff;
+    font-size: 18px;
+    color: #333;
+}
+
+.toc li::before {
+    counter-increment: section;
+    content: counters(section, ".") " ";
+    font-weight: bold;
+    margin-right: 10px;
 }

@@ -1,4 +1,3 @@
-import React from "react";
 import InputArea from "../components/InputArea";
 import Navbar from "../components/Navbar";
 

@@ -1,5 +1,3 @@
-import React from "react";
-
 interface CharCountDisplayProps {
     currentCharCount: number;
     maxCharCount: number;
