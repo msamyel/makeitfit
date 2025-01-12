@@ -1,5 +1,11 @@
 import React from "react";
 import CharCountDisplay from "./CharCountDisplay";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faAngleUp,
+    faAngleDown,
+    faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 const InputArea = () => {
     const [currentCharCount, setCurrentCharCount] = React.useState(0);
@@ -31,21 +37,30 @@ const InputArea = () => {
                             onClick={() => {}}
                             className="text-gray-700 opacity-25 hover:opacity-100 focus:text-green-800 focus:outline-none"
                         >
-                            <i className="fas fa-angle-up text-2xl"></i>
+                            <FontAwesomeIcon
+                                icon={faAngleUp}
+                                className="text-2xl"
+                            />
                         </button>
                         <button
                             type="button"
                             onClick={() => {}}
                             className="text-gray-700 opacity-25 hover:opacity-100 focus:text-green-800 focus:outline-none"
                         >
-                            <i className="fas fa-angle-down text-2xl"></i>
+                            <FontAwesomeIcon
+                                icon={faAngleDown}
+                                className="text-2xl"
+                            />
                         </button>
                         <button
                             type="button"
                             onClick={() => {}}
                             className="text-red-700 opacity-25 hover:opacity-100 focus:text-green-800 focus:outline-none"
                         >
-                            <i className="fas fa-xmark text-2xl"></i>
+                            <FontAwesomeIcon
+                                icon={faXmark}
+                                className="text-2xl"
+                            />
                         </button>
                     </div>
 
