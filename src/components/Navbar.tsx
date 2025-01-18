@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import header from "../assets/header.png";
 
 const Navbar = () => {
     return (
@@ -8,7 +9,7 @@ const Navbar = () => {
             </h1>
             <div>
                 <a href="/">
-                    <img src="/images/header.png" alt="Logo" className="h-8" />
+                    <img src={header} alt="Logo" className="h-8" />
                 </a>
                 <p className="hidden">
                     Will your social media status fit on every platform?
