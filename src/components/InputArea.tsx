@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import CharCountDisplay from "./CharCountDisplay";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -27,7 +27,11 @@ const InputArea = ({
     onMoveInputDown,
     onRemoveInput,
 }: InputAreaProps) => {
-    const [currentCharCount, setCurrentCharCount] = React.useState(0);
+    const [currentCharCount, setCurrentCharCount] = useState(0);
+
+    useEffect(() => {
+        setCurrentCharCount(text.length);
+    }, []);
 
     const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setCurrentCharCount(event.target.value.length);

@@ -21,9 +21,8 @@ const Home = () => {
                         Post 1
                     </div>
                 </div>
-                <div className="flex flex-col gap-8 p-8">
-                    <h2>Home</h2>
-                    <InputAreaArray texts={[""]} />
+                <div className="flex flex-col gap-8 p-8 grow">
+                    <InputAreaArray postId={0} />
                 </div>
             </main>
         </>

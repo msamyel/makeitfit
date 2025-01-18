@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputArea from "./InputArea";
 
 interface InputAreaArrayProps {
-    texts: string[];
+    postId: number;
 }
 
-const InputAreaArray = ({ texts }: InputAreaArrayProps) => {
-    const [inputArray, setInputArray] = useState<string[]>(texts);
+const InputAreaArray = ({ postId }: InputAreaArrayProps) => {
+    const [inputArray, setInputArray] = useState<string[]>([]);
+
+    useEffect(() => {
+        const savedStory = localStorage.getItem(`story_${postId}`);
+        if (savedStory) {
+            setInputArray(JSON.parse(savedStory));
+        } else {
+            setInputArray([""]);
+        }
+    }, [postId]);
+
+    const saveStory = () => {
+        localStorage.setItem(`story_${postId}`, JSON.stringify(inputArray));
+    };
 
     const handleTextChange = (index: number, text: string) => {
         const newInputArray = [...inputArray];
         newInputArray[index] = text;
         setInputArray(newInputArray);
+        saveStory();
     };
 
     const appendInput = (index: number) => {
@@ -24,6 +38,7 @@ const InputAreaArray = ({ texts }: InputAreaArrayProps) => {
         const newInputArray = [...inputArray];
         newInputArray.splice(index, 1);
         setInputArray(newInputArray);
+        saveStory();
     };
 
     const moveInputUp = (index: number) => {
@@ -33,6 +48,7 @@ const InputAreaArray = ({ texts }: InputAreaArrayProps) => {
         newInputArray[index - 1] = newInputArray[index];
         newInputArray[index] = temp;
         setInputArray(newInputArray);
+        saveStory();
     };
 
     const moveInputDown = (index: number) => {
@@ -42,6 +58,7 @@ const InputAreaArray = ({ texts }: InputAreaArrayProps) => {
         newInputArray[index + 1] = newInputArray[index];
         newInputArray[index] = temp;
         setInputArray(newInputArray);
+        saveStory();
     };
 
     return (
