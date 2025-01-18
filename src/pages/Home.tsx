@@ -1,4 +1,3 @@
-import InputArea from "../components/InputArea";
 import InputAreaArray from "../components/InputAreaArray";
 
 const Home = () => {

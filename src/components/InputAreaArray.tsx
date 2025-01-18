@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useState } from "react";
 import InputArea from "./InputArea";
 
 interface InputAreaArrayProps {
@@ -6,7 +6,7 @@ interface InputAreaArrayProps {
 }
 
 const InputAreaArray = ({ texts }: InputAreaArrayProps) => {
-    const [inputArray, setInputArray] = React.useState<string[]>(texts);
+    const [inputArray, setInputArray] = useState<string[]>(texts);
 
     const handleTextChange = (index: number, text: string) => {
         const newInputArray = [...inputArray];
@@ -20,16 +20,44 @@ const InputAreaArray = ({ texts }: InputAreaArrayProps) => {
         setInputArray(newInputArray);
     };
 
+    const removeInput = (index: number) => {
+        const newInputArray = [...inputArray];
+        newInputArray.splice(index, 1);
+        setInputArray(newInputArray);
+    };
+
+    const moveInputUp = (index: number) => {
+        if (index === 0) return;
+        const newInputArray = [...inputArray];
+        const temp = newInputArray[index - 1];
+        newInputArray[index - 1] = newInputArray[index];
+        newInputArray[index] = temp;
+        setInputArray(newInputArray);
+    };
+
+    const moveInputDown = (index: number) => {
+        if (index === inputArray.length - 1) return;
+        const newInputArray = [...inputArray];
+        const temp = newInputArray[index + 1];
+        newInputArray[index + 1] = newInputArray[index];
+        newInputArray[index] = temp;
+        setInputArray(newInputArray);
+    };
+
     return (
         <>
             {inputArray.map((input, index) => (
                 <InputArea
                     key={index}
+                    index={index}
                     text={input}
                     onUpdateText={(updatedText) =>
                         handleTextChange(index, updatedText)
                     }
                     onAppendInput={() => appendInput(index)}
+                    onRemoveInput={() => removeInput(index)}
+                    onMoveInputDown={() => moveInputDown(index)}
+                    onMoveInputUp={() => moveInputUp(index)}
                 />
             ))}
         </>

@@ -9,12 +9,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 interface InputAreaProps {
+    index: number;
     text: string;
     onUpdateText: (text: string) => void;
     onAppendInput: () => void;
+    onMoveInputUp: () => void;
+    onMoveInputDown: () => void;
+    onRemoveInput: () => void;
 }
 
-const InputArea = ({ text, onUpdateText, onAppendInput }: InputAreaProps) => {
+const InputArea = ({
+    index,
+    text,
+    onUpdateText,
+    onAppendInput,
+    onMoveInputUp,
+    onMoveInputDown,
+    onRemoveInput,
+}: InputAreaProps) => {
     const [currentCharCount, setCurrentCharCount] = React.useState(0);
 
     const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -43,7 +55,7 @@ const InputArea = ({ text, onUpdateText, onAppendInput }: InputAreaProps) => {
                         </button>
                         <button
                             type="button"
-                            onClick={() => {}}
+                            onClick={onMoveInputUp}
                             className="text-gray-700 opacity-25 hover:opacity-100 focus:text-green-800 focus:outline-none"
                         >
                             <FontAwesomeIcon
@@ -53,7 +65,7 @@ const InputArea = ({ text, onUpdateText, onAppendInput }: InputAreaProps) => {
                         </button>
                         <button
                             type="button"
-                            onClick={() => {}}
+                            onClick={onMoveInputDown}
                             className="text-gray-700 opacity-25 hover:opacity-100 focus:text-green-800 focus:outline-none"
                         >
                             <FontAwesomeIcon
@@ -63,7 +75,7 @@ const InputArea = ({ text, onUpdateText, onAppendInput }: InputAreaProps) => {
                         </button>
                         <button
                             type="button"
-                            onClick={() => {}}
+                            onClick={onRemoveInput}
                             className="text-red-700 opacity-25 hover:opacity-100 focus:text-green-800 focus:outline-none"
                         >
                             <FontAwesomeIcon
