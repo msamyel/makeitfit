@@ -1,4 +1,5 @@
 import InputArea from "../components/InputArea";
+import InputAreaArray from "../components/InputAreaArray";
 
 const Home = () => {
     return (
@@ -23,7 +24,7 @@ const Home = () => {
                 </div>
                 <div className="flex flex-col gap-8 p-8">
                     <h2>Home</h2>
-                    <InputArea />
+                    <InputAreaArray texts={[""]} />
                 </div>
             </main>
         </>
