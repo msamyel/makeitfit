@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CharCountDisplay from "./CharCountDisplay";
+import { Position } from "../types/Position";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faPlusCircle,
@@ -9,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 interface InputAreaProps {
-    index: number;
+    position: Position;
     text: string;
     onUpdateText: (text: string) => void;
     onAppendInput: () => void;
@@ -19,7 +20,7 @@ interface InputAreaProps {
 }
 
 const InputArea = ({
-    index,
+    position,
     text,
     onUpdateText,
     onAppendInput,
@@ -57,26 +58,30 @@ const InputArea = ({
                         >
                             😎
                         </button>
-                        <button
-                            type="button"
-                            onClick={onMoveInputUp}
-                            className="text-gray-700 opacity-25 hover:opacity-100 focus:text-green-800 focus:outline-none"
-                        >
-                            <FontAwesomeIcon
-                                icon={faAngleUp}
-                                className="text-2xl"
-                            />
-                        </button>
-                        <button
-                            type="button"
-                            onClick={onMoveInputDown}
-                            className="text-gray-700 opacity-25 hover:opacity-100 focus:text-green-800 focus:outline-none"
-                        >
-                            <FontAwesomeIcon
-                                icon={faAngleDown}
-                                className="text-2xl"
-                            />
-                        </button>
+                        {position !== "first" && (
+                            <button
+                                type="button"
+                                onClick={onMoveInputUp}
+                                className="text-gray-700 opacity-25 hover:opacity-100 focus:text-green-800 focus:outline-none"
+                            >
+                                <FontAwesomeIcon
+                                    icon={faAngleUp}
+                                    className="text-2xl"
+                                />
+                            </button>
+                        )}
+                        {position !== "last" && (
+                            <button
+                                type="button"
+                                onClick={onMoveInputDown}
+                                className="text-gray-700 opacity-25 hover:opacity-100 focus:text-green-800 focus:outline-none"
+                            >
+                                <FontAwesomeIcon
+                                    icon={faAngleDown}
+                                    className="text-2xl"
+                                />
+                            </button>
+                        )}
                         <button
                             type="button"
                             onClick={onRemoveInput}

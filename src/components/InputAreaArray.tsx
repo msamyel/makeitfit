@@ -2,23 +2,23 @@ import { useEffect, useState } from "react";
 import InputArea from "./InputArea";
 
 interface InputAreaArrayProps {
-    postId: number;
+    threadId: number;
 }
 
-const InputAreaArray = ({ postId }: InputAreaArrayProps) => {
+const InputAreaArray = ({ threadId }: InputAreaArrayProps) => {
     const [inputArray, setInputArray] = useState<string[]>([]);
 
     useEffect(() => {
-        const savedStory = localStorage.getItem(`story_${postId}`);
+        const savedStory = localStorage.getItem(`thread_${threadId}`);
         if (savedStory) {
             setInputArray(JSON.parse(savedStory));
         } else {
             setInputArray([""]);
         }
-    }, [postId]);
+    }, [threadId]);
 
     const saveStory = () => {
-        localStorage.setItem(`story_${postId}`, JSON.stringify(inputArray));
+        localStorage.setItem(`thread_${threadId}`, JSON.stringify(inputArray));
     };
 
     const handleTextChange = (index: number, text: string) => {
@@ -66,7 +66,13 @@ const InputAreaArray = ({ postId }: InputAreaArrayProps) => {
             {inputArray.map((input, index) => (
                 <InputArea
                     key={index}
-                    index={index}
+                    position={
+                        index === 0
+                            ? "first"
+                            : index === inputArray.length - 1
+                            ? "last"
+                            : "middle"
+                    }
                     text={input}
                     onUpdateText={(updatedText) =>
                         handleTextChange(index, updatedText)
