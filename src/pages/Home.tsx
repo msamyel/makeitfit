@@ -34,6 +34,7 @@ const Home = () => {
             const threadContents = localStorage.getItem(`thread_${threadId}`);
             if (!threadContents) return "New Thread";
             const threadContentsArray = JSON.parse(threadContents);
+            if (!threadContentsArray[0]) return "New Thread";
             return threadContentsArray[0].split(" ").slice(0, 10).join(" ");
         },
         [selectedThreadId]
@@ -45,6 +46,24 @@ const Home = () => {
         setThreads(newThreads);
         selectThreadId(newThreadId);
         saveThreads(newThreads);
+    };
+
+    const removeThread = (threadId: number) => {
+        const confirmation = confirm(
+            "Are you sure you want to remove this thread?"
+        );
+        if (confirmation) {
+            confirmRemoveThread(threadId);
+        }
+    };
+
+    const confirmRemoveThread = (threadId: number) => {
+        const newThreads = threads.filter((t) => t !== threadId);
+        console.log(newThreads);
+        console.log(Math.max(...newThreads));
+        saveThreads(newThreads);
+        selectThreadId(Math.max(...newThreads));
+        setThreads(newThreads);
     };
 
     const selectThreadId = (threadId: number) => {
@@ -81,6 +100,7 @@ const Home = () => {
                                 title={getFirstWordsOfThread(threadId)}
                                 onSelectThread={() => selectThreadId(threadId)}
                                 isSelected={selectedThreadId === threadId}
+                                onRemoveThread={() => removeThread(threadId)}
                             ></ThreadButton>
                         ))}
                 </div>

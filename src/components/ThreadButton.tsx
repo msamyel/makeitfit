@@ -1,8 +1,12 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+
 interface ThreadButtonProps {
     threadId: number;
     title: string;
     onSelectThread: () => void;
     isSelected: boolean;
+    onRemoveThread: () => void;
 }
 
 const ThreadButton = ({
@@ -10,6 +14,7 @@ const ThreadButton = ({
     title,
     onSelectThread,
     isSelected,
+    onRemoveThread,
 }: ThreadButtonProps) => {
     const bgColor = isSelected
         ? "bg-gray-800"
@@ -22,9 +27,18 @@ const ThreadButton = ({
                 onClick={onSelectThread}
                 className={
                     bgColor +
-                    " block group py-2 px-4 text-nowrap overflow-clip cursor-pointer"
+                    " relative block group py-2 px-4 text-nowrap overflow-clip cursor-pointer"
                 }
             >
+                {isSelected && (
+                    <button
+                        type="button"
+                        onClick={onRemoveThread}
+                        className="absolute text-white opacity-25 hover:opacity-100 focus:outline-none"
+                    >
+                        <FontAwesomeIcon icon={faXmark} className="text-2xl" />
+                    </button>
+                )}
                 <span
                     className={
                         textColor + " block text-right font-bold text-2xl"
