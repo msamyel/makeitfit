@@ -64,7 +64,7 @@ const InputAreaArray = ({ threadId }: InputAreaArrayProps) => {
 
     return (
         <>
-            <h2>Thread #{threadId}</h2>
+            <h2 className="font-bold text-xl">Thread #{threadId}</h2>
             {inputArray.map((input, index) => (
                 <InputArea
                     key={index}
