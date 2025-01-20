@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 
 interface ThreadButtonProps {
     threadId: number;
@@ -21,6 +22,11 @@ const ThreadButton = ({
         : "bg-onahau hover:bg-sandy-beach";
     const textColor = isSelected ? "text-white" : "text-gray-800";
 
+    const onClickRemove = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
+        onRemoveThread();
+    };
+
     return (
         <>
             <div
@@ -33,7 +39,7 @@ const ThreadButton = ({
                 {isSelected && (
                     <button
                         type="button"
-                        onClick={onRemoveThread}
+                        onClick={onClickRemove}
                         className="absolute text-white opacity-25 hover:opacity-100 focus:outline-none"
                     >
                         <FontAwesomeIcon icon={faXmark} className="text-2xl" />
