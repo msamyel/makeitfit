@@ -17,7 +17,12 @@ const InputAreaArray = ({ threadId }: InputAreaArrayProps) => {
         }
     }, [threadId]);
 
+    useEffect(() => {
+        saveStory();
+    }, [inputArray]);
+
     const saveStory = () => {
+        console.log(inputArray);
         localStorage.setItem(`thread_${threadId}`, JSON.stringify(inputArray));
     };
 
@@ -25,7 +30,6 @@ const InputAreaArray = ({ threadId }: InputAreaArrayProps) => {
         const newInputArray = [...inputArray];
         newInputArray[index] = text;
         setInputArray(newInputArray);
-        saveStory();
     };
 
     const appendInput = (index: number) => {
@@ -38,7 +42,6 @@ const InputAreaArray = ({ threadId }: InputAreaArrayProps) => {
         const newInputArray = [...inputArray];
         newInputArray.splice(index, 1);
         setInputArray(newInputArray);
-        saveStory();
     };
 
     const moveInputUp = (index: number) => {
@@ -48,7 +51,6 @@ const InputAreaArray = ({ threadId }: InputAreaArrayProps) => {
         newInputArray[index - 1] = newInputArray[index];
         newInputArray[index] = temp;
         setInputArray(newInputArray);
-        saveStory();
     };
 
     const moveInputDown = (index: number) => {
@@ -58,7 +60,6 @@ const InputAreaArray = ({ threadId }: InputAreaArrayProps) => {
         newInputArray[index + 1] = newInputArray[index];
         newInputArray[index] = temp;
         setInputArray(newInputArray);
-        saveStory();
     };
 
     return (
