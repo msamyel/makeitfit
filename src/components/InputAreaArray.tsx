@@ -2,7 +2,6 @@ import { useEffect, useState, MouseEvent, ChangeEvent } from "react";
 import InputArea from "./InputArea";
 import EmojiPicker from "emoji-picker-react";
 import { EmojiClickData } from "emoji-picker-react";
-import { text } from "@fortawesome/fontawesome-svg-core";
 
 interface InputAreaArrayProps {
     threadId: number;
@@ -115,7 +114,7 @@ const InputAreaArray = ({ threadId }: InputAreaArrayProps) => {
 
     const insertEmoji = (
         emojiData: EmojiClickData,
-        event: MouseEvent<Element, MouseEvent>
+        _: MouseEvent<Element, MouseEvent>
     ) => {
         const emoji = emojiData.emoji;
         const newInputArray = [...inputArray];

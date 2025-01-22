@@ -55,7 +55,7 @@ export function getXWeighedCharCount(text: string): number {
     return weighedCharCount;
 }
 
-export function isDoubleWeighCharacter(char: string): boolean {
+export function isDoubleWeighCharacter(char: String): boolean {
     const charCode = char.charCodeAt(0);
 
     if (charCode >= 0 && charCode <= 4351) {
@@ -125,7 +125,7 @@ export function getBlueskyCharCount(text: string): number {
 
 export function getThreadsCharCount(text: string): number {
     let charCount = 0;
-    for (let char of text) {
+    for (let _ of text) {
         charCount++;
     }
     return charCount;
