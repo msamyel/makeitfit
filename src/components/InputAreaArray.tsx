@@ -159,6 +159,7 @@ const InputAreaArray = ({ threadId }: InputAreaArrayProps) => {
                 }}
             >
                 <EmojiPicker
+                    //@ts-expect-error error TS2322: Type '(emojiData: EmojiClickData, _: MouseEvent<Element, MouseEvent>) => void' is not assignable to type 'MouseDownEvent'.
                     onEmojiClick={insertEmoji}
                     open={emojiPickerVisible}
                 />

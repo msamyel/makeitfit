@@ -1,6 +1,7 @@
 import TopLevelDomainsList from "tld-list";
 
 function separateGraphemes(text: string): String[] {
+    // @ts-expect-error TS2339: Property 'Segmenter' does not exist on type 'typeof Intl'.
     const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
     const graphemeIterator = segmenter.segment(text)[Symbol.iterator]();
     const graphemes = [];
