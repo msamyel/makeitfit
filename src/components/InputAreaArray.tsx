@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo, MouseEvent, ChangeEvent } from "react";
+import { useEffect, useState, MouseEvent, ChangeEvent } from "react";
 import InputArea from "./InputArea";
 import EmojiPicker from "emoji-picker-react";
 import { EmojiClickData } from "emoji-picker-react";
@@ -164,10 +164,6 @@ const InputAreaArray = ({ threadId }: InputAreaArrayProps) => {
                     open={emojiPickerVisible}
                 />
             </div>
-            <p>
-                {textAreaSelection.focusedAreaId}, {textAreaSelection.start},{" "}
-                {textAreaSelection.end}
-            </p>
             <h2 className="font-bold text-xl">Thread #{threadId}</h2>
             {inputArray.map((input, index) => (
                 <InputArea
