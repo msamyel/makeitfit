@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ChangeEvent } from "react";
+import React, { useEffect, useState, useRef, ChangeEvent } from "react";
 import CharCountDisplay from "./CharCountDisplay";
 import { Position } from "../types/Position";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,6 +8,14 @@ import {
     faAngleDown,
     faXmark,
 } from "@fortawesome/free-solid-svg-icons";
+
+import {
+    getBlueskyCharCount,
+    getMastodonCharCount,
+    getThreadsCharCount,
+    getXWeighedCharCount,
+} from "../services/CharacterCounters";
+import CharacterCounts from "../types/CharacterCounts";
 
 interface InputAreaProps {
     position: Position;
@@ -32,18 +40,44 @@ const InputArea = ({
     onEmojiClick,
     onUpdateSelection,
 }: InputAreaProps) => {
-    const [currentCharCount, setCurrentCharCount] = useState(0);
+    const [characterCounts, setCharacterCounts] = useState<CharacterCounts>({
+        bluesky: 0,
+        mastodon: 0,
+        threads: 0,
+        x: 0,
+    });
+
+    const textareaRef = useRef(null);
 
     useEffect(() => {
-        setCurrentCharCount(text.length);
-    }, []);
+        const textArea = textareaRef.current! as HTMLTextAreaElement;
+        updateTextAreaHeight(textArea);
+
+        const counts = {
+            bluesky: getBlueskyCharCount(text),
+            mastodon: getMastodonCharCount(text),
+            threads: getThreadsCharCount(text),
+            x: getXWeighedCharCount(text),
+        };
+
+        setCharacterCounts(counts);
+    }, [text]);
+
+    const updateTextAreaHeight = (textArea: HTMLTextAreaElement) => {
+        textArea.style.height = "auto";
+        textArea.style.height = textArea.scrollHeight + "px";
+    };
 
     const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setCurrentCharCount(event.target.value.length);
         onUpdateText(event, event.target.value);
 
-        // also update cursor
         const textAreaTarget = event.target as HTMLTextAreaElement;
+
+        // update textarea height
+        updateTextAreaHeight(textAreaTarget);
+
+        // also update cursor
+
         const selectionStart = textAreaTarget.selectionStart;
         const selectionEnd = textAreaTarget.selectionEnd;
         onUpdateSelection(selectionStart, selectionEnd);
@@ -64,11 +98,12 @@ const InputArea = ({
 
     return (
         <>
-            <div id="prefab">
+            <div>
                 <div className="relative">
                     <textarea
+                        ref={textareaRef}
                         id="textarea_id_placeholder"
-                        className="quote-textarea h-24 w-full resize-none border-none bg-gray-50 p-2 pr-[120px] text-xl tracking-wider focus:outline-none"
+                        className="quote-textarea break-words h-24 w-full resize-none border-none bg-gray-50 p-2 pr-[120px] text-xl tracking-wider focus:outline-none"
                         onInput={handleInput}
                         onClick={handleTextAreaClick}
                         value={text}
@@ -120,10 +155,7 @@ const InputArea = ({
                     </div>
 
                     <div className="space-between flex h-[20px] w-full flex-row">
-                        <CharCountDisplay
-                            currentCharCount={currentCharCount}
-                            maxCharCount={280}
-                        />
+                        <CharCountDisplay characterCounts={characterCounts} />
                         <button
                             type="button"
                             onClick={onAppendInput}

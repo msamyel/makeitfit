@@ -164,7 +164,6 @@ const InputAreaArray = ({ threadId }: InputAreaArrayProps) => {
                     open={emojiPickerVisible}
                 />
             </div>
-            <p>{inputArray}</p>
             <p>
                 {textAreaSelection.focusedAreaId}, {textAreaSelection.start},{" "}
                 {textAreaSelection.end}
