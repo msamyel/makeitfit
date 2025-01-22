@@ -1,7 +1,7 @@
 const About = () => {
     return (
         <>
-            <main className="article pb-[185px] p-8">
+            <main id="article" className="pb-[185px] p-8">
                 <h2>
                     Hello,
                     <br />

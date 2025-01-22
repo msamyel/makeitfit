@@ -4,9 +4,9 @@ const Footer = () => {
             <div className="bg-gray-800 text-white py-4 px-8 h-[40px] flex justify-between items-center">
                 <p>Created by Matěj Voslař</p>
                 <p>
-                    <a href="#" id="openCookieSettings" className="text-white">
-                        Cookie settings
-                    </a>
+                    <span id="cookie-disclaimer" className="text-white">
+                        Not using cookies.
+                    </span>
                 </p>
             </div>
         </footer>
