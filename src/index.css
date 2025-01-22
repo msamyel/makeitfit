@@ -26,6 +26,7 @@
     }
 }
 
+#about,
 #article {
     font-family: Arial, sans-serif;
     width: 80vw;
@@ -37,6 +38,7 @@
     display: none;
 }
 
+#about p,
 #article p {
     font-size: 17px;
     line-height: 1.5;
@@ -44,6 +46,7 @@
     margin: 10px 0;
 }
 
+#about h2,
 #article h2 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -51,11 +54,13 @@
     margin-bottom: 1rem;
 }
 
+#about h2 .app-name,
 #article h2 .app-name {
     color: #1f2937;
     text-decoration: underline;
 }
 
+#about h3,
 #article h3 {
     font-size: 25px;
     color: #444;

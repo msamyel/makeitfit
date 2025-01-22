@@ -4,8 +4,8 @@ const About = () => {
     return (
         <>
             <PageTitle title={"About"} />
-            <main id="article" className="pb-[185px] p-8">
-                <h2>
+            <main id="about" className="lg:w-[1200px] mx-auto pb-[185px] p-8">
+                <h2 className="text-3xl">
                     Hello,
                     <br />
                     and welcome to{" "}
