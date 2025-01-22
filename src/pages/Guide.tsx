@@ -1,8 +1,10 @@
 import React from "react";
+import PageTitle from "../components/PageTitle";
 
 const Guide = () => {
     return (
         <>
+            <PageTitle title={"How to write engaging threads"} />
             <div className="flex flex-row content-between flex-wrap">
                 <div className="lg:w-[1200px]" id="article">
                     <h2>

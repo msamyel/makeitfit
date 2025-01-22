@@ -3,6 +3,7 @@ import ThreadButton from "../components/ThreadButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { useCallback, useEffect, useState } from "react";
+import PageTitle from "../components/PageTitle";
 
 const Home = () => {
     const [selectedThreadId, setSelectedThreadId] = useState<number>(0);
@@ -79,6 +80,7 @@ const Home = () => {
 
     return (
         <>
+            <PageTitle title={"Thread #" + selectedThreadId} />
             <main className="w-full h-full flex justify-left items-left pb-[185px]">
                 <div className="w-[120px] h-full flex flex-col gap-1 p-1">
                     <button

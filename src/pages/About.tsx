@@ -1,6 +1,9 @@
+import PageTitle from "../components/PageTitle";
+
 const About = () => {
     return (
         <>
+            <PageTitle title={"About"} />
             <main id="article" className="pb-[185px] p-8">
                 <h2>
                     Hello,

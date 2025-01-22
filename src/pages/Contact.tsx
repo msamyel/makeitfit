@@ -1,10 +1,12 @@
 import { faDiscord, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PageTitle from "../components/PageTitle";
 import matejv from "../assets/matejv.png";
 
 const Contact = () => {
     return (
         <>
+            <PageTitle title={"Contact"} />
             <main className="flex flex-row justify-center content-between flex-wrap">
                 <div className="lg:w-[400px] text-center">
                     <h1 className="text-4xl font-bold mb-8 mt-8 text-center">
