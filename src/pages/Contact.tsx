@@ -6,7 +6,7 @@ const Contact = () => {
     return (
         <>
             <main className="flex flex-row justify-center content-between flex-wrap">
-                <div className="lg:w-[400px]">
+                <div className="lg:w-[400px] text-center">
                     <h1 className="text-4xl font-bold mb-8 mt-8 text-center">
                         Contact
                     </h1>
@@ -22,8 +22,8 @@ const Contact = () => {
                             className="text-link-primary hover:text-link-secondary"
                         >
                             Terms of Use
-                        </a>
-                        |
+                        </a>{" "}
+                        |{" "}
                         <a
                             href="/terms"
                             className="text-link-primary hover:text-link-secondary"
@@ -33,21 +33,22 @@ const Contact = () => {
                     </p>
 
                     <p className="mb-4">
-                        Big thanks to woody180 for their
+                        Uses{" "}
                         <a
-                            href="https://github.com/woody180/vanilla-javascript-emoji-picker"
+                            href="https://www.npmjs.com/package/emoji-picker-react"
                             className="text-link-primary hover:text-link-secondary"
                             target="_blank"
                         >
-                            FG Emoji Picker
+                            emoji-picker-react
                         </a>
-                        script and to mock-end for their
+                        {". "}
+                        Thanks mock-end for their{" "}
                         <a
                             href="https://github.com/mock-end/tld-list"
                             className="text-link-primary hover:text-link-secondary"
                         >
                             list
-                        </a>
+                        </a>{" "}
                         of Top Level Domains.
                     </p>
                     <h2 className="text-4xl font-bold mt-8 mb-8 text-center">
