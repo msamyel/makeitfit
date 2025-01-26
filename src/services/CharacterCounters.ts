@@ -20,7 +20,7 @@ export function getGraphemeCount(text: string): number {
     return count;
 }
 
-export function getXWeighedCharCount(text: string): number {
+export function getXCharCount(text: string): number {
     let weighedCharCount: number = 0;
     // Regular expression to match two non-whitespace strings connected by a dot
     //   var regex = /S+.S+/;

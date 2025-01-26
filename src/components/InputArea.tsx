@@ -13,7 +13,7 @@ import {
     getBlueskyCharCount,
     getMastodonCharCount,
     getThreadsCharCount,
-    getXWeighedCharCount,
+    getXCharCount,
 } from "../services/CharacterCounters";
 import CharacterCounts from "../types/CharacterCounts";
 
@@ -57,7 +57,7 @@ const InputArea = ({
             bluesky: getBlueskyCharCount(text),
             mastodon: getMastodonCharCount(text),
             threads: getThreadsCharCount(text),
-            x: getXWeighedCharCount(text),
+            x: getXCharCount(text),
         };
 
         setCharacterCounts(counts);
