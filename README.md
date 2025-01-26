@@ -1,50 +1,25 @@
-# React + TypeScript + Vite
+# Make It Fit!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a project which I created out of necessity in the
+time during which I managed multiple social media accounts.
 
-Currently, two official plugins are available:
+Each social media platform a different number of characters
+which it allows in a single post. Each platform also has
+different rules for counting the number of characters in a hypertext link,
+or non-English characters such as kanji symbols or emoji.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Some examples of these differences are illuminated in the `tests/CharacterCounters.test.ts` file.
 
-## Expanding the ESLint configuration
+## Online version
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The contents of `dist/` folder are publicly available
+on the tool's website [make-it-fit.online](https://make-it-fit.online/).
 
-- Configure the top-level `parserOptions` property like this:
+## Running locally
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+To run the tool on you machine, execute the following two commands:
+
 ```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+npm install
+npm run dev
 ```
