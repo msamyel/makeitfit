@@ -17,7 +17,7 @@ const Guide = () => {
                         find the result below with practical examples and links
                         to further resource helpful. When you actually get to
                         writing a thread, you can use{" "}
-                        <a href="/">Make! It! Fit!</a> to plan your threads so
+                        <a href="/">Make It Fit!</a> to plan your threads so
                         that they fit on each social media platform perfectly.
                     </p>
                     <p>
